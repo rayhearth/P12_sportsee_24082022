@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { Layout, Home, Dashboard } from '@/pages'
 import Error from '@/_utils/Error'
+import User from '@/pages/User';
 
 
 const PublicRouter = () => {
@@ -13,6 +14,7 @@ const PublicRouter = () => {
 
         <Route path='home' element={<Home />} />
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path ='user' element={<User/>}/>
 
         <Route path='*' element={<Error />} />
       </Route>

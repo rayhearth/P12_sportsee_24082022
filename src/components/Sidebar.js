@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import yoga from '../styles/img/yoga.svg'
+import nage from '../styles/img/nage.svg'
+import velo from '../styles/img/velo.svg'
+import haltere from '../styles/img/haltere.svg'
 
 /*
 @component
@@ -12,9 +15,9 @@ const SideBar = () => {
         <div className='sidebar'>
             <ul className="sidebar-menu">
                 <li className='sidebar-link'><Link to='/dashboard'><img src={yoga} alt="" /></Link></li>
-                <li className='sidebar-link'><img src={process.env.PUBLIC_URL + '/assets/img/nage.svg'} alt="nage" /></li>
-                <li className='sidebar-link'><img src={process.env.PUBLIC_URL + '/assets/img/velo.svg'} alt="velo" /></li>
-                <li className='sidebar-link'><img src={process.env.PUBLIC_URL + '/assets/img/haltere.svg'} alt="haltere" /></li>
+                <li className='sidebar-link'><Link to='/dashboard'><img src={nage} alt="nage" /></Link></li>
+                <li className='sidebar-link'><Link to='/dashboard'><img src={velo} alt="velo" /></Link></li>
+                <li className='sidebar-link'><Link to='/dashboard'><img src={haltere} alt="haltere" /></Link></li>
             </ul>
             <div className="sidebar-copyright"><span>Copyright, SportSee 2020</span></div>
         </div>
