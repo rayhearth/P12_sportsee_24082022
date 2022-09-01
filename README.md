@@ -1,3 +1,44 @@
+
+![Logo](https://github.com/rayhearth/P12_Sportsee_24082022/blob/master/public/assets/img/logo.svg)
+
+
+# P12-Sportsee
+
+
+## Présentation
+
+SportSee project is an application for sportive people that want to follow their daily progress through analytics dashboard.
+## Prerequisites
+
+
+- [NodeJS (version 16.15.0)](https://nodejs.org/en/)
+- [NPM (version 8.5.5)](https://www.npmjs.com/)
+- [Yarn (version 1.22.18)](https://yarnpkg.com/)
+- [REACT (version 17.0.2)](https://en.reactjs.org/) is recommanded to run charts correctly 
+- [Recharts](https://recharts.org/en-US/)
+- [VsCode](https://code.visualstudio.com/)
+If you are working with several versions of NodeJS, we recommend you install nvm. This tool will allow you to easily manage your NodeJS versions.
+## Authors
+
+- [@emmanuellejupon](https://https://github.com/rayhearth?tab=repositories)
+
+
+## Learn more
+
+You can learn more in the [Create React App documentation](https://create-react-app.dev/docs/getting-started/).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+## Installing the app
+
+Installing the app
+Forke and clone the repository : 
+
+Run the yarn command will allow you to install the dependencies
+
+Backend : open a new terminal and run cd BackEnd command, then run yarn devcommand the backend will open http://localhost:3000
+
+FrontEnd: open a new terminal, then run the yarn start command will allow you to run the application on http://localhost:3001
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
