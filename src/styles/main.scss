@@ -1,0 +1,14 @@
+@use "sass:math";
+
+@import "./utils/_variables";
+@import "./base/reset";
+
+// @import "./components/";
+
+
+@import "./layout/_header";
+@import "./layout/sidebar";
+// @import "./layout/_footer";
+
+// @import "./pages/error";
+// @import "./pages/home.scss";
