@@ -7,8 +7,9 @@
 
 
 @import "./layout/_header";
-@import "./layout/sidebar";
+@import "./layout/_sidebar";
 // @import "./layout/_footer";
 
 // @import "./pages/error";
-// @import "./pages/home.scss";
+@import "./pages/layout"; 
+@import "./pages/home";

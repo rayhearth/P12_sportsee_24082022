@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <div className='layout'>
             <Header />
-            <div id='admin'>
+            <div className='admin' id='admin'>
                 <SideBar />
                 <div id='admin_body'>
                     <Outlet />
