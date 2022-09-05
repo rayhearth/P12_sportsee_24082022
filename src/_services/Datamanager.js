@@ -7,22 +7,17 @@ import Axios from './Caller.services'
  * @param {Number} userId User id number
  * @then  {Promise}  User main information
  */
-// let getAllUsers = () => {
-//     return Axios.get(`/user/` + {userId})
-// }
 
-// let getUser = (uid) => {
-//     return Axios.get('/users/' + uid)
-// }
 
 /**on recupere les données de USER_MAIN_DATA */
 let get = () => {
-    return Axios.get(`/user/12` )
+    return Axios.get(`user/12`)
 }
+
 
 /**on recupere les données de USER_ACTIVITY */
 let getActivity = () => {
-    return Axios.get(`user/12/activity`)
+    return Axios.get(`user/`+ 12 +`/activity`)
 }
 
 // let getActivity = () => {
@@ -37,11 +32,6 @@ let getActivity = () => {
 let getAverageSessions = () => {
     /**on recupere les données de USER_AVERAGE_SESSIONS */
     return Axios.get(`user/12/average-sessions`)
-    // axios.averageSessions(`http://localhost:3000/user/${userId}/average-sessions`
-    //     .then(res => res.data.data)
-    //     .catch(error => console.log(error))
-    // )
-
 }
 
 let getPerformance = () => {
