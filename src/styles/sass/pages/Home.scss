@@ -1,3 +1,9 @@
 .home{
     display: flex;
+    flex-direction: column;
+    .usercards{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
