@@ -1,9 +1,5 @@
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
 import Axios from './Caller.services'
 
-
-const { userId } = useParams
 
 /**
  * Get main information data: user infos, key data & today score
@@ -11,9 +7,9 @@ const { userId } = useParams
  * @param {Number} userId User id number
  * @then  {Promise}  User main information
  */
-let getAllUsers = () => {
-    return Axios.get('/users')
-}
+// let getAllUsers = () => {
+//     return Axios.get(`/user/` + {userId})
+// }
 
 // let getUser = (uid) => {
 //     return Axios.get('/users/' + uid)
@@ -21,39 +17,43 @@ let getAllUsers = () => {
 
 /**on recupere les données de USER_MAIN_DATA */
 let get = () => {
-    axios.get(`http://localhost:3000/user/${userId}`
-        .then(res => res.data)
-        .catch(error => console.log(error))
-    )
+    return Axios.get(`/user/12` )
 }
 
+/**on recupere les données de USER_ACTIVITY */
 let getActivity = () => {
-    /**on recupere les données de USER_ACTIVITY */
-    axios.activity(`http://localhost:3000/user/${userId}/activity`
-        .then(res => res.data.data)
-        .catch(error => console.log(error))
-    )
-
+    return Axios.get(`user/12/activity`)
 }
+
+// let getActivity = () => {
+
+//     axios.activity(`http://localhost:3000/user/${userId}/activity`
+//         .then(res => res.data.data)
+//         .catch(error => console.log(error))
+//     )
+
+// }
 
 let getAverageSessions = () => {
     /**on recupere les données de USER_AVERAGE_SESSIONS */
-    axios.averageSessions(`http://localhost:3000/user/${userId}/average-sessions`
-        .then(res => res.data.data)
-        .catch(error => console.log(error))
-    )
+    return Axios.get(`user/12/average-sessions`)
+    // axios.averageSessions(`http://localhost:3000/user/${userId}/average-sessions`
+    //     .then(res => res.data.data)
+    //     .catch(error => console.log(error))
+    // )
 
 }
 
 let getPerformance = () => {
     /**on recupere les données de USER_PERFORMANCE */
-    axios.performance(`http://localhost:3000/user/${userId}/performance`
-        .then(res => res.data.data)
-        .catch(error => console.log(error))
-    )
+    return Axios.get(`user/12/performance`)
+    // axios.performance(`http://localhost:3000/user/${userId}/performance`
+    //     .then(res => res.data.data)
+    //     .catch(error => console.log(error))
+    // )
 
 }
 
 export const dataServices = {
-    getAllUsers, get, getActivity, getAverageSessions, getPerformance
+    get, getActivity, getAverageSessions, getPerformance
 }
