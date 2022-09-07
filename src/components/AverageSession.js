@@ -1,18 +1,9 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-const AverageSesssion = ({ data }) => {
+const AverageSession = ({ data }) => {
 
-    const CustomTooltip = ({ active, payload }) => {
-        if (active && payload && payload.length) {
-            return (
-                <div className="linechart-custom-tooltip">
-                    <p className="tooltipKg">{`${payload[0].value} min`}</p>
-                </div>
-            );
-        }
-        return null;
-    }
+
 
     const daysWeek = { 1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D' }
 
@@ -49,7 +40,18 @@ const AverageSesssion = ({ data }) => {
             </ResponsiveContainer>
 
         </div>
-    );
-};
+    )
+}
 
-export default AverageSesssion;
+const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="linechart-custom-tooltip">
+                <p className="tooltipKg">{`${payload[0].value} min`}</p>
+            </div>
+        );
+    }
+    return null;
+}
+
+export default AverageSession;

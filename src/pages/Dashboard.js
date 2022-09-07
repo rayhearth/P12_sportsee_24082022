@@ -2,50 +2,84 @@ import React, { useEffect, useState } from 'react';
 
 import { dataServices } from '@/_services/Datamanager';
 import Activity from '../components/Activity';
-import AverageSesssion from '../components/AverageSesssion';
+import AverageSession from '../components/AverageSession';
 
 
 const Dashboard = () => {
 
-    // const {id} = useParams()
+    // const { userId } = useParams()
+
+    // const [datas, setDatas] = useState({
+    //     user: [],
+    //     activity: [],
+    //     averageSessions: [],
+    //     performance: []
+    // }
+    // )
 
     const [user, setUser] = useState([])
     const [activity, setActivity] = useState([])
-    const [averageSessions, setAverageSessions] = useState()
-    const [performance, setPerformance] = useState()
-    const [performanceKind, setPerformanceKind] = useState()
+    const [averageSessions, setAverageSessions] = useState([])
+    const [performance, setPerformance] = useState([])
+    // const [performanceKind, setPerformanceKind] = useState([])
+
+    // const flag = useRef(false)
 
     useEffect(() => {
-        dataServices.get()
-            .then(res => setUser(res.data))
+        dataServices.getUser()
+            .then(res => setUser(res.data.data))
             .catch(error => error)
-    }, [])
 
-    useEffect(() => {
         dataServices.getActivity()
-            .then(res => setActivity(res.data))
+            .then(res => setActivity(res.data.data))
             .catch(error => error)
-    }, [])
 
-    useEffect(() => {
-        dataServices.getAverageSessions()
-            .then(res => setAverageSessions(res.data))
+            dataServices.getAverageSessions()
+            .then(res => setAverageSessions(res.data.data))
             .catch(error => error)
-    }, [])
 
-    useEffect(() => {
-        dataServices.getPerformance()
+            dataServices.getPerformance()
             .then(res => setPerformance(res.data.data))
-            .then(res => setPerformanceKind(res.data.Kind))
+            // .then(res => setPerformanceKind(res.data.Kind))
             .catch(error => error)
+
     }, [])
+
+    // useEffect(() => {
+    //     dataServices.getActivity()
+    //         .then(res => setActivity(res.data.data))
+    //         .catch(error => error)
+    // }, [])
+
+    // useEffect(() => {
+    //     dataServices.getAverageSessions()
+    //         .then(res => setAverageSessions(res.data.data))
+    //         .catch(error => error)
+    // }, [])
+
+    // useEffect(() => {
+    //     dataServices.getPerformance()
+    //         .then(res => setPerformance(res.data.data))
+    //         // .then(res => setPerformanceKind(res.data.Kind))
+    //         .catch(error => error)
+
+    // }, [])
 
 
     return (
         <div className='dashboard'>
-            <h1>Bonjour Thomas</h1>
-            <Activity />
-            <AverageSesssion />
+            <h1>Bonjour <span></span>
+            </h1>
+            {/* {user.userInfos.firstName} */}
+            <div className="activity">
+                <Activity data={activity.userActivity} />
+
+
+
+            </div>
+
+            <AverageSession />
+
         </div>
     );
 };

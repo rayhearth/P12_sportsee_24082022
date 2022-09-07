@@ -10,14 +10,14 @@ import Axios from './Caller.services'
 
 
 /**on recupere les données de USER_MAIN_DATA */
-let get = () => {
-    return Axios.get(`user/12`)
+let getUser = () => {
+    return Axios.get(`/user/`+ 12)
 }
 
 
 /**on recupere les données de USER_ACTIVITY */
 let getActivity = () => {
-    return Axios.get(`user/`+ 12 +`/activity`)
+    return Axios.get(`/user/`+ 12+`/activity`)
 }
 
 // let getActivity = () => {
@@ -31,12 +31,12 @@ let getActivity = () => {
 
 let getAverageSessions = () => {
     /**on recupere les données de USER_AVERAGE_SESSIONS */
-    return Axios.get(`user/12/average-sessions`)
+    return Axios.get(`/user/12/average-sessions`)
 }
 
 let getPerformance = () => {
     /**on recupere les données de USER_PERFORMANCE */
-    return Axios.get(`user/12/performance`)
+    return Axios.get(`/user/12/performance`)
     // axios.performance(`http://localhost:3000/user/${userId}/performance`
     //     .then(res => res.data.data)
     //     .catch(error => console.log(error))
@@ -45,5 +45,5 @@ let getPerformance = () => {
 }
 
 export const dataServices = {
-    get, getActivity, getAverageSessions, getPerformance
+    getUser, getActivity, getAverageSessions, getPerformance
 }
