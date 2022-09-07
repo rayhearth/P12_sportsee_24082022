@@ -1,6 +1,6 @@
 import React from 'react';
 
-const score = () => {
+const Score = () => {
     return (
         <div className='score'>
             
@@ -8,4 +8,4 @@ const score = () => {
     );
 };
 
-export default score;
+export default Score;

@@ -21,7 +21,6 @@ const Dashboard = () => {
     const [activity, setActivity] = useState([])
     const [averageSessions, setAverageSessions] = useState([])
     const [performance, setPerformance] = useState([])
-    // const [performanceKind, setPerformanceKind] = useState([])
 
     // const flag = useRef(false)
 
@@ -34,43 +33,22 @@ const Dashboard = () => {
             .then(res => setActivity(res.data.data))
             .catch(error => error)
 
-            dataServices.getAverageSessions()
+        dataServices.getAverageSessions()
             .then(res => setAverageSessions(res.data.data))
             .catch(error => error)
 
-            dataServices.getPerformance()
+        dataServices.getPerformance()
             .then(res => setPerformance(res.data.data))
-            // .then(res => setPerformanceKind(res.data.Kind))
             .catch(error => error)
-
     }, [])
 
-    // useEffect(() => {
-    //     dataServices.getActivity()
-    //         .then(res => setActivity(res.data.data))
-    //         .catch(error => error)
-    // }, [])
-
-    // useEffect(() => {
-    //     dataServices.getAverageSessions()
-    //         .then(res => setAverageSessions(res.data.data))
-    //         .catch(error => error)
-    // }, [])
-
-    // useEffect(() => {
-    //     dataServices.getPerformance()
-    //         .then(res => setPerformance(res.data.data))
-    //         // .then(res => setPerformanceKind(res.data.Kind))
-    //         .catch(error => error)
-
-    // }, [])
 
 
     return (
         <div className='dashboard'>
-            <h1>Bonjour <span></span>
+            <h1>Bonjour {''}<span></span>
             </h1>
-            {/* {user.userInfos.firstName} */}
+
             <div className="activity">
                 <Activity data={activity.userActivity} />
 
