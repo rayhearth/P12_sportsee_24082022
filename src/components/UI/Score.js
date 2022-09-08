@@ -10,8 +10,12 @@ const Score = () => {
 
     const { userId } = useParams()
 
-    const { isLoading, data } = useQuery('users', () => dataServices.getPerformance(userId))
+    const { isLoading, data } = useQuery('userPerformance', () => dataServices.getPerformance(userId))
     const userPerformance = data || {}
+
+    if (isLoading) {
+        return <div>Loading ...</div>
+    }
 
     return (
         <div className='score'>

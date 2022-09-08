@@ -17,8 +17,8 @@ const Performance = () => {
 
     const { userId } = useParams()
 
-    const { isLoading, data } = useQuery('users', () => dataServices.getActivity(userId))
-    const userActivity = data || {}
+    const { isLoading, data } = useQuery('userPerformance', () => dataServices.getActivity(userId))
+    const userPerformance = data || {}
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -33,7 +33,7 @@ const Performance = () => {
                     outerRadius={150}
                     width={500}
                     height={500}
-                    data={userActivity}
+                    data={userPerformance}
                 >
                     <PolarGrid />
                     <PolarAngleAxis dataKey="subject" />
