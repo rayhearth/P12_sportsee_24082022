@@ -1,62 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query';
 
 import { dataServices } from '@/_services/Datamanager';
-import Activity from '../components/Activity';
-import AverageSession from '../components/AverageSession';
+
+import Activity from '@/components/UI/Activity';
+import AverageSession from '@/components/UI/AverageSession';
+import Performance from '@/components/UI/Performance';
+import Score from '@/components/UI/Score';
 
 
 const Dashboard = () => {
 
-    // const { userId } = useParams()
+    /**@param {Number} userId */
 
-    // const [datas, setDatas] = useState({
-    //     user: [],
-    //     activity: [],
-    //     averageSessions: [],
-    //     performance: []
-    // }
-    // )
+    const { userId } = useParams()
 
-    const [user, setUser] = useState([])
-    const [activity, setActivity] = useState([])
-    const [averageSessions, setAverageSessions] = useState([])
-    const [performance, setPerformance] = useState([])
-
-    // const flag = useRef(false)
-
-    useEffect(() => {
-        dataServices.getUser()
-            .then(res => setUser(res.data.data))
-            .catch(error => error)
-
-        dataServices.getActivity()
-            .then(res => setActivity(res.data.data))
-            .catch(error => error)
-
-        dataServices.getAverageSessions()
-            .then(res => setAverageSessions(res.data.data))
-            .catch(error => error)
-
-        dataServices.getPerformance()
-            .then(res => setPerformance(res.data.data))
-            .catch(error => error)
-    }, [])
+    const { isLoading, data } = useQuery('users', () => dataServices.getUser(userId))
+    const users = data || {}
 
 
+    if (isLoading) {
+        return <div>Loading ...</div>
+    }
 
     return (
         <div className='dashboard'>
-            <h1>Bonjour {''}<span></span>
+            <h1>Bonjour {''}<span>{users.data.userInfos.firstName}</span>
             </h1>
 
             <div className="activity">
-                <Activity data={activity.userActivity} />
+                <Activity />
 
 
 
             </div>
 
             <AverageSession />
+            <Performance/>
+            <Score/>
 
         </div>
     );

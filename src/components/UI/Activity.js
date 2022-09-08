@@ -1,10 +1,23 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom'
+
+import { dataServices } from '@/_services/Datamanager';
+
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
-const Activity = ({ activity }) => {
+const Activity = () => {
     
-    const formatDay = (item) => (new Date(item)).getDate()
+    const { userId } = useParams()
 
+    const { isLoading, data } = useQuery('userActivity', () => dataServices.getActivity(userId))
+    const userActivity = data || {}
+
+    console.log(userActivity)
+
+    if (isLoading) {
+        return <div>Loading ...</div>
+    }
 
     return (
         <div className='daily-activity'>
@@ -15,12 +28,11 @@ const Activity = ({ activity }) => {
                 <li>Calories brûlées (Kcal)</li>
             </ul>
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={activity}>
+                <BarChart data={userActivity.sessions}>
                     <CartesianGrid strokeDasharray="2" vertical={false} />
                     <XAxis
                         dataKey="day"
                         tickMargin={16}
-                        tickFormatter={formatDay}
                         tickSize={0}
                         minTickGap={30}
                     />
@@ -40,19 +52,13 @@ const Activity = ({ activity }) => {
                         orientation='right'
                         domain={['dataMin-100', 'dataMax+0']}
                     />
-                    <Tooltip content={<CustomTooltip />} />
+                    <Tooltip />
                     <Bar
                         yAxisId="kilogram"
                         dataKey="kilogram"
                         fill="#282D30"
                         barSize={10}
                         radius={[5, 5, 0, 0]}
-                    />
-                    <Bar
-                        yAxisId="calories"
-                        dataKey="calories"
-                        fill="transparent"
-                        barSize={3}
                     />
                     <Bar
                         yAxisId="calories"
@@ -67,11 +73,5 @@ const Activity = ({ activity }) => {
     )
 }
 
-const CustomTooltip = ({ active, payload }) => active ? (
-    <div className="chart-tooltip">
-        <div>{payload[0].value}kg</div>
-        <div>{payload[1].value}kCal</div>
-    </div>
-) : null
 
 export default Activity;

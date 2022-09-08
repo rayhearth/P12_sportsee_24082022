@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import yoga from '../styles/img/yoga.svg'
-import nage from '../styles/img/nage.svg'
-import velo from '../styles/img/velo.svg'
-import haltere from '../styles/img/haltere.svg'
+import yoga from '@/styles/img/yoga.svg'
+import nage from '@/styles/img/nage.svg'
+import velo from '@/styles/img/velo.svg'
+import haltere from '@/styles/img/haltere.svg'
 
-/*
+/**
 @component
 @return{jsx.Element}
-*/
+ */
 
 const SideBar = () => {
     return (

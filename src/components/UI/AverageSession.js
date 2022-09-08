@@ -1,13 +1,22 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom'
+
+import { dataServices } from '@/_services/Datamanager';
+
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-const AverageSession = ({ data }) => {
+const AverageSession = () => {
+    const { userId } = useParams()
 
+    const { isLoading, data } = useQuery('userAvSession', () => dataServices.getAverageSessions(userId))
+    const userAvSession = data || {}
 
+    console.log(userAvSession)
 
-    const daysWeek = { 1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D' }
-
-    const formatDay = (item) => daysWeek[item]
+    if (isLoading) {
+        return <div>Loading ...</div>
+    }
 
     return (
         <div className='average-session'>
@@ -16,12 +25,10 @@ const AverageSession = ({ data }) => {
                 <LineChart data={data}>
                     <XAxis dataKey="day"
                         axisLine={false}
-                        tickFormatter={formatDay}
                         tick={{ fill: '#FFFFF' }}
                         tickMargin={10}
                         tickSize={0}
                         padding={{ left: 5, right: 5 }}
-
                     />
                     <YAxis
                         hide
