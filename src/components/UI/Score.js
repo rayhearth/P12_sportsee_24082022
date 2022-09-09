@@ -8,8 +8,14 @@ import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
 const Score = () => {
 
+    /**@param {Number} userId */
     const { userId } = useParams()
 
+    /**
+     * @param   {string}  userScore
+     * @param   {Number} userId  
+     * @return  {object} data
+     */
     const { isLoading, data } = useQuery('userScore', () => dataServices.getUser(userId))
     const userScore = data || {}
 

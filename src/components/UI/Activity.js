@@ -8,8 +8,14 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 
 const Activity = () => {
 
+    /**@param {Number} userId */
     const { userId } = useParams()
 
+    /**
+     * @param   {string}  userActivity
+     * @param   {Number} userId  
+     * @return  {object} data
+     */
     const { isLoading, data } = useQuery('userActivity', () => dataServices.getActivity(userId))
     const userActivity = data || {}
 

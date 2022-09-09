@@ -8,12 +8,18 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 
 const Performance = () => {
 
+    /**@param {Number} userId */
     const { userId } = useParams()
 
+    /**
+     * @param   {string}  userPerformance
+     * @param   {Number} userId  
+     * @return  {object} data
+     */
     const { isLoading, data } = useQuery('userPerformance', () => dataServices.getPerformance(userId))
     const userPerformance = data || {}
 
-    console.log(userPerformance)
+    const kindFormated = (id) => userPerformance.data.kind[id]
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -32,6 +38,7 @@ const Performance = () => {
                         radialLines={false}
                     />
                     <PolarAngleAxis dataKey="kind"
+                        tickFormatter={kindFormated}
                         tickLine={false}
                         axisLine={false}
                         dy={5}
