@@ -23,6 +23,9 @@ const Performance = () => {
         <div className='performance'>
             <ResponsiveContainer width="100%" height="100%">
                 <RadarChart
+                    cx="50%"
+                    cy="50%"
+                    outerRadius="80%"
                     data={userPerformance.data.data}
                 >
                     <PolarGrid
@@ -35,6 +38,7 @@ const Performance = () => {
                         stroke="#FFFF"
                         fill="#FFFF"
                     />
+                    <PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />
                     <Radar
                         dataKey="value"
                         fill="#FF0000"
