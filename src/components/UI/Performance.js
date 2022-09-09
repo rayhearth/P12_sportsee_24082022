@@ -10,9 +10,10 @@ const Performance = () => {
 
     const { userId } = useParams()
 
-    const { isLoading, data } = useQuery('userPerformance', () => dataServices.getActivity(userId))
+    const { isLoading, data } = useQuery('userPerformance', () => dataServices.getPerformance(userId))
     const userPerformance = data || {}
 
+    console.log(userPerformance)
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -22,7 +23,7 @@ const Performance = () => {
         <div className='performance'>
             <ResponsiveContainer width="100%" height="100%">
                 <RadarChart
-                    data={userPerformance.data}
+                    data={userPerformance.data.data}
                 >
                     <PolarGrid
                         radialLines={false}

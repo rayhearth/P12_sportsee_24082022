@@ -18,7 +18,7 @@ const getUser = async (userId) => {
 /**
  * Get main information data: user infos, key data & today score
  * @param {Number} userId User id number
- * @const {data}  User main information
+ * @const {data}  User activity
  * @await Axios get
  * @return data
  */
@@ -31,7 +31,7 @@ const getActivity = async (userId) => {
 /**
  * Get main information data: user infos, key data & today score
  * @param {Number} userId User id number
- * @const {data}  User main information
+ * @const {data}  User average session
  * @await Axios get
  * @return data
  */
@@ -44,7 +44,7 @@ const getAverageSessions = async (userId) => {
 /**
  * Get main information data: user infos, key data & today score
  * @param {Number} userId User id number
- * @const {data}  User main information
+ * @const {data}  User performance
  * @await Axios get
  * @return data
  */
@@ -53,6 +53,9 @@ const getPerformance = async (userId) => {
     return data
 }
 
+/**
+ * @var {type} dataServices
+ */
 export const dataServices = {
     getUser, getActivity, getAverageSessions, getPerformance
 }

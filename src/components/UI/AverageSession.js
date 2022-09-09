@@ -7,8 +7,15 @@ import { dataServices } from '@/_services/Datamanager';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const AverageSession = () => {
+
+    /**@param {Number} userId */
     const { userId } = useParams()
 
+    /**
+     * @param   {string}  userAvSession
+     * @param   {Number} userId  
+     * @return  {object} data
+     */
     const { isLoading, data } = useQuery('userAvSession', () => dataServices.getAverageSessions(userId))
     const userAvSession = data || {}
 
@@ -34,7 +41,7 @@ const AverageSession = () => {
                 <LineChart data={userAvSession.data.sessions}>
                     <XAxis dataKey="day"
                         axisLine={false}
-                        tick={{fill: '#FFFF'}}
+                        tick={{ fill: '#FFFF' }}
                         tickMargin={10}
                         tickSize={0}
                         padding={{ left: 5, right: 5 }}
@@ -54,7 +61,6 @@ const AverageSession = () => {
                     />
                 </LineChart>
             </ResponsiveContainer>
-
         </div>
     )
 }
