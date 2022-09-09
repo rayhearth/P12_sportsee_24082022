@@ -33,9 +33,19 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 Installing the app
 Forke and clone the repository : 
 
-Run the yarn command will allow you to install the dependencies
+for the backEnd:
+
+cd Baclend
+
+yarn dev
 
 Backend : open a new terminal and run cd BackEnd command, then run yarn devcommand the backend will open http://localhost:3000
+
+for the Front:
+
+npm install
+
+npm run starto
 
 FrontEnd: open a new terminal, then run the yarn start command will allow you to run the application on http://localhost:3001
 

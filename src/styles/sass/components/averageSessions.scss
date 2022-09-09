@@ -1,0 +1,27 @@
+.average-session {
+    width: 16.125rem;
+    height: 16.438rem;
+    position: relative;
+    background-color: $red;
+    border-radius: 5px;
+    font-size: 12px;
+    h2 {
+        color: rgba(255, 255, 255, 0.6);
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        width: 9.25rem;
+        line-height: 1.5rem;
+    }
+    svg {
+        grid-area: average-sessions;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        padding: 4em 1em 1em;
+    }
+    .tooltipKg {
+        color: black;
+        background-color: white;
+        padding: 1em 0.375em;
+    }
+}

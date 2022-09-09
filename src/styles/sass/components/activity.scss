@@ -1,0 +1,51 @@
+.daily-activity {
+    width: 52.188rem;
+    height: 20rem;
+    padding: 6em 2em 2em;
+    position: relative;
+    background-color: $grayLight;
+    h2 {
+        font-size: 0.938rem;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+    }
+    .charts-legend {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        display: flex;
+        gap: 2rem;
+        font-size: 0.875rem;
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            &:before {
+                content: "";
+                display: block;
+                width: 0.5rem;
+                height: 0.5rem;
+                border-radius: 0.25rem;
+                &:first-child {
+                    color:$grayDark;
+                    background-color: $grayDark;
+                }
+                &:last-child{
+                    color: $red;
+                    background-color: $red;
+                }
+            }
+        }
+    }
+    .chart-tooltip{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem 0.375rem;
+        background-color: $red;
+        color: white;
+        font-size: 0.75rem;
+    }
+}

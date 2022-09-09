@@ -10,8 +10,15 @@ const Score = () => {
 
     const { userId } = useParams()
 
-    const { isLoading, data } = useQuery('userPerformance', () => dataServices.getPerformance(userId))
-    const userPerformance = data || {}
+    const { isLoading, data } = useQuery('userScore', () => dataServices.getUser(userId))
+    const userScore = data || {}
+
+    const CustomLegend = ({ payload }) => (
+        <div className="chart-legend">
+            <div className="chart-legend-1">{payload[0].payload.value * 100}%</div>
+            <div className="chart-legend-2">de votre objectif</div>
+        </div>
+    )
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -28,7 +35,7 @@ const Score = () => {
                         innerRadius={'85%'} outerRadius={'100%'}
                         cornerRadius={'50%'}
                         dataKey="value"
-                        data={[{ name: 'score', value: userPerformance }, { name: 'total', value: 1 - data }]}
+                        data={[{ name: 'score', value: userScore.data.todayScore }, { name: 'total', value: 1 - userScore.data.todayScore }]}
                     >
                         <Cell fill="#E60000" stroke="#E60000" />
                         <Cell fill="transparent" stroke="transparent" />
@@ -36,7 +43,7 @@ const Score = () => {
                     <Pie
                         cx={'50%'} cy={'50%'}
                         outerRadius={'85%'}
-                        fill="#FFFFFF"
+                        fill="#FFFF"
                         data={[{ name: 'ring', value: 100 }]}
                         dataKey="value"
                     />

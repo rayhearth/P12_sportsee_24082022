@@ -9,9 +9,7 @@ const Layout = () => {
             <Header />
             <div className='admin' id='admin'>
                 <SideBar />
-                <div id='admin_body'>
-                    <Outlet />
-                </div>
+                <Outlet />
             </div>
         </div>
     );

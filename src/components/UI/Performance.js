@@ -4,14 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { dataServices } from '@/_services/Datamanager';
 
-import {
-    Radar,
-    RadarChart,
-    PolarGrid,
-    PolarAngleAxis,
-    PolarRadiusAxis,
-    ResponsiveContainer
-} from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from "recharts";
 
 const Performance = () => {
 
@@ -19,6 +12,7 @@ const Performance = () => {
 
     const { isLoading, data } = useQuery('userPerformance', () => dataServices.getActivity(userId))
     const userPerformance = data || {}
+
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -28,21 +22,21 @@ const Performance = () => {
         <div className='performance'>
             <ResponsiveContainer width="100%" height="100%">
                 <RadarChart
-                    cx={300}
-                    cy={250}
-                    outerRadius={150}
-                    width={500}
-                    height={500}
-                    data={userPerformance}
+                    data={userPerformance.data}
                 >
-                    <PolarGrid />
-                    <PolarAngleAxis dataKey="subject" />
-                    <PolarRadiusAxis />
+                    <PolarGrid
+                        radialLines={false}
+                    />
+                    <PolarAngleAxis dataKey="kind"
+                        tickLine={false}
+                        axisLine={false}
+                        dy={5}
+                        stroke="#FFFF"
+                        fill="#FFFF"
+                    />
                     <Radar
-                        name="Mike"
                         dataKey="value"
-                        stroke="#8884d8"
-                        fill="#FF0101"
+                        fill="#FF0000"
                         fillOpacity={0.6}
                     />
                 </RadarChart>

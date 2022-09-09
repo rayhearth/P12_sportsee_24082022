@@ -7,13 +7,18 @@ import { dataServices } from '@/_services/Datamanager';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 const Activity = () => {
-    
+
     const { userId } = useParams()
 
     const { isLoading, data } = useQuery('userActivity', () => dataServices.getActivity(userId))
     const userActivity = data || {}
 
-    console.log(userActivity)
+    const CustomTooltip = ({ active, payload }) => active ? (
+        <div className="chart-tooltip">
+            <div>{payload[0].value}kg</div>
+            <div>{payload[1].value}kCal</div>
+        </div>
+    ) : null
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -28,7 +33,7 @@ const Activity = () => {
                 <li>Calories brûlées (Kcal)</li>
             </ul>
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={userActivity.sessions}>
+                <BarChart data={userActivity.data.sessions}>
                     <CartesianGrid strokeDasharray="2" vertical={false} />
                     <XAxis
                         dataKey="day"
@@ -52,7 +57,7 @@ const Activity = () => {
                         orientation='right'
                         domain={['dataMin-100', 'dataMax+0']}
                     />
-                    <Tooltip />
+                    <Tooltip content={<CustomTooltip />} />
                     <Bar
                         yAxisId="kilogram"
                         dataKey="kilogram"
@@ -71,7 +76,10 @@ const Activity = () => {
             </ResponsiveContainer>
         </div>
     )
+
+
 }
+
 
 
 export default Activity;
