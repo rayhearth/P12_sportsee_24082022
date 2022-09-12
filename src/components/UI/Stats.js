@@ -9,7 +9,7 @@ import energy from '@/styles/img/energy.svg'
  * it take in a type and value, and return a div with icon, title and unit
  * 
  * @prop {String} type of keyData
- * @prop {String} value of the keyData
+ * @prop {number} value of the keyData
  * 
  * @return {React.ReactElement} a react component
  */
@@ -62,10 +62,6 @@ const Stats = ({type , value}) => {
             </div>
         </div>
     );
-
-
-
-
 
 };
 

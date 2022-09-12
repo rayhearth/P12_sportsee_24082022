@@ -15,7 +15,13 @@ const Dashboard = () => {
     /**@param {Number} userId */
     const { userId } = useParams()
 
-    const { isLoading, data } = useQuery('users', () => dataServices.getUser(userId))
+    /**
+     * getUser
+     * @param   {String}  users
+     * @param   {Number}  userId
+     * @return  {Object}
+     */
+    const { isLoading, data, error } = useQuery('users', () => dataServices.getUser(userId))
     const users = data || {}
     console.log(users)
 
@@ -23,33 +29,39 @@ const Dashboard = () => {
         return <div>Loading ...</div>
     }
 
+    if (error) {
+        return <div>404</div>
+    }
+
     return (
         <section className='dashboard'>
+
             <div className='user-header'>
                 <h1>Bonjour {''}<span>{users.data.userInfos.firstName}</span>
                 </h1>
                 <p className="section-secondary">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
+
             <div className='dashboard-container'>
-                <div className="activity">
-                    <Activity />
 
-
-
+                <div className="graphic-container">
+                    <div className="activity">
+                        <Activity />
+                    </div>
+                    <div className="graphic">
+                        <AverageSession />
+                        <Performance />
+                        <Score />
+                    </div>
                 </div>
-
-                <AverageSession />
-                <Performance />
-                <Score />
+                
                 <div className="stats">
-                    {Object.keys(users.data.keyData).map((key)=>(
-                        <Stats type={key} value={users.data.keyData[key]} key={key}/>
+                    {/* map on our users.keyData object for each 'key' return a div depending on the type */}
+                    {Object.keys(users.data.keyData).map((key) => (
+                        <Stats type={key} value={users.data.keyData[key]} key={key} />
                     ))}
                 </div>
-
             </div>
-
-
         </section>
     );
 };

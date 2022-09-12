@@ -1,6 +1,7 @@
 .daily-activity {
-    width: 52.188rem;
+    // width: 52.188rem;
     height: 20rem;
+    border-radius: 0.625rem;
     padding: 6em 2em 2em;
     position: relative;
     background-color: $grayLight;
@@ -47,5 +48,10 @@
         background-color: $red;
         color: white;
         font-size: 0.75rem;
+        
     }
+    // .recharts-tooltip-xrapper{
+    //     outline: none !important;
+    //     border: none !important;
+    // }
 }

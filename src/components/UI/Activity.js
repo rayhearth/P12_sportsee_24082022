@@ -32,7 +32,6 @@ const Activity = () => {
 
     return (
         <div className='daily-activity'>
-
             <h2 className='charts-title'>Activité quotidienne</h2>
             <ul className='charts-legend'>
                 <li>Poids (kg)</li>
