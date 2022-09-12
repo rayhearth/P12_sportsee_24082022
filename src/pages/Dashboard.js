@@ -17,7 +17,7 @@ const Dashboard = () => {
 
     const { isLoading, data } = useQuery('users', () => dataServices.getUser(userId))
     const users = data || {}
-
+    console.log(users)
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -41,7 +41,11 @@ const Dashboard = () => {
                 <AverageSession />
                 <Performance />
                 <Score />
-                <Stats/>
+                <div className="stats">
+                    {Object.keys(users.data.keyData).map((key)=>(
+                        <Stats type={key} value={users.data.keyData[key]} key={key}/>
+                    ))}
+                </div>
 
             </div>
 

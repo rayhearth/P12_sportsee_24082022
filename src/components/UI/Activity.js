@@ -63,7 +63,8 @@ const Activity = () => {
                         orientation='right'
                         domain={['dataMin-100', 'dataMax+0']}
                     />
-                    <Tooltip content={<CustomTooltip />} />
+                    <Tooltip content={<CustomTooltip />} 
+                    />
                     <Bar
                         yAxisId="kilogram"
                         dataKey="kilogram"

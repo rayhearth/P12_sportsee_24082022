@@ -33,6 +33,7 @@ const Performance = () => {
                     cy="50%"
                     outerRadius="80%"
                     data={userPerformance.data.data}
+                    padding={{ left: 5, right: 5 }}
                 >
                     <PolarGrid
                         radialLines={false}

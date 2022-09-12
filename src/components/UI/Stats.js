@@ -1,37 +1,26 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'
-import { useQuery } from 'react-query';
 
 import apple from '@/styles/img/apple.svg'
 import cheeseburger from '@/styles/img/cheeseburger.svg'
 import chicken from '@/styles/img/chicken.svg'
 import energy from '@/styles/img/energy.svg'
 
-import { dataServices } from '@/_services/Datamanager';
-import { type } from '@testing-library/user-event/dist/type';
+/**
+ * it take in a type and value, and return a div with icon, title and unit
+ * 
+ * @prop {String} type of keyData
+ * @prop {String} value of the keyData
+ * 
+ * @return {React.ReactElement} a react component
+ */
+const Stats = ({type , value}) => {
 
-const Stats = () => {
+    let stat = { icon: '', unit: '', title: '' }
 
-    /**@param {Number} userId */
-    const { userId } = useParams()
-
-    const { isLoading, data } = useQuery('userStat', () => dataServices.getUser(userId))
-    const userStat = data || {}
-console.log(userStat)
-
-
-    if (isLoading) {
-        return <div>Loading ...</div>
-    }
-
-    
-    let stat = { icon: '', color: '', unit: '', title: '' }
-
-    switch () {
+    switch (type) {
         case 'calorieCount':
             stat = {
                 icon: energy,
-                color: 'red',
                 unit: 'kCal',
                 title: 'Calories',
             }
@@ -39,7 +28,6 @@ console.log(userStat)
         case 'proteinCount':
             stat = {
                 icon: chicken,
-                color: 'blue',
                 unit: 'g',
                 title: 'Proteines',
             }
@@ -47,7 +35,6 @@ console.log(userStat)
         case 'carbohydrateCount':
             stat = {
                 icon: apple,
-                color: 'yellow',
                 unit: 'g',
                 title: 'Glucides',
             }
@@ -55,23 +42,31 @@ console.log(userStat)
         case 'lipidCount':
             stat = {
                 icon: cheeseburger,
-                color: 'pink',
                 unit: 'g',
                 title: 'Lipides',
             }
             break
+        default: break
+
+
     }
-
-
-
-
-
 
     return (
         <div className='stats'>
-
+            <div className={`stat-icon icon-${stat.title}`} >
+                <img src={stat.icon} alt={stat.title} />
+            </div>
+            <div className='stat-contain'>
+                <h2>{value}{stat.unit}</h2>
+                <p>{stat.title}</p>
+            </div>
         </div>
     );
+
+
+
+
+
 };
 
 export default Stats;
