@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types'
+
 import apple from '@/styles/img/apple.svg'
 import cheeseburger from '@/styles/img/cheeseburger.svg'
 import chicken from '@/styles/img/chicken.svg'
@@ -62,7 +64,11 @@ const Stats = ({type , value}) => {
             </div>
         </div>
     );
-
 };
+
+Stats.propTypes = {
+    type : PropTypes.string.isRequired,
+    value : PropTypes.number.isRequired
+    }
 
 export default Stats;

@@ -2,6 +2,8 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom'
 
+
+
 import { dataServices } from '@/_services/Datamanager';
 
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
