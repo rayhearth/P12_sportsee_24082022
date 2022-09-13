@@ -1,0 +1,39 @@
+.statistiques {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .stats {
+        background-color: $grayLight;
+        border-radius: 0.625rem;
+        width: 16.125rem;
+        height: 7.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+        .stat-icon {
+            border-radius: 0.313rem;
+            width: 3.75rem;
+            height: 3.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1/1;
+            
+        }
+        .icon-Calories{
+            background-color: rgb(255, 0, 0, 0.2);
+        }
+        .icon-Proteines{
+            background-color: rgb(74, 184, 255, 0.2);
+        }
+        .icon-Glucides{
+            background-color: rgb(253, 204, 12, 0.2);
+        }
+        .icon-Lipides{
+            background-color: rgb(253, 81, 129, 0.2);
+        }
+    }
+    
+}

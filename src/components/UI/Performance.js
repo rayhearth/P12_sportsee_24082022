@@ -32,7 +32,9 @@ const Performance = () => {
                 <RadarChart
                     cx="50%"
                     cy="50%"
-                    outerRadius="80%"
+                    outerRadius="75"
+                    startAngle={210}
+                    endAngle={210 + 360}
                     data={userPerformance.data.data}
                     padding={{ left: 5, right: 5 }}
                 >
