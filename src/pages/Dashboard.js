@@ -23,7 +23,6 @@ const Dashboard = () => {
      */
     const { isLoading, data, error } = useQuery('users', () => dataServices.getUser(userId))
     const users = data || {}
-    console.log(users)
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -54,9 +53,9 @@ const Dashboard = () => {
                         <Score />
                     </div>
                 </div>
-                
+
                 <div className="stats">
-                    {/* map on our users.keyData object for each 'key' return a div depending on the type */}
+                    {/* It takes an object as a parameter, then it map on our users.keyData object for each 'key' return a div depending on the type */}
                     {Object.keys(users.data.keyData).map((key) => (
                         <Stats type={key} value={users.data.keyData[key]} key={key} />
                     ))}

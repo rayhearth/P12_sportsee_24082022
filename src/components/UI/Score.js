@@ -12,6 +12,7 @@ const Score = () => {
     const { userId } = useParams()
 
     /**
+     * getUser
      * @param   {string}  userScore
      * @param   {Number} userId  
      * @return  {object} data

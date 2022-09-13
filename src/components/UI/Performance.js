@@ -12,6 +12,7 @@ const Performance = () => {
     const { userId } = useParams()
 
     /**
+     * getPerformance
      * @param   {string}  userPerformance
      * @param   {Number} userId  
      * @return  {object} data

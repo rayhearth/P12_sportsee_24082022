@@ -6,12 +6,13 @@ import { dataServices } from '@/_services/Datamanager';
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
-const Activity = () => {
+const Activity = ({sessions}) => {
 
     /**@param {Number} userId */
     const { userId } = useParams()
 
     /**
+     * getActivity
      * @param   {string}  userActivity
      * @param   {Number} userId  
      * @return  {object} data
@@ -19,12 +20,22 @@ const Activity = () => {
     const { isLoading, data } = useQuery('userActivity', () => dataServices.getActivity(userId))
     const userActivity = data || {}
 
+    
     const CustomTooltip = ({ active, payload }) => active ? (
         <div className="chart-tooltip">
             <div>{payload[0].value}kg</div>
             <div>{payload[1].value}kCal</div>
         </div>
     ) : null
+
+    /**
+     * convert and formate the date to a number(to: '2020-07-01' from '1')
+     * @param   {string}  day the date from the API
+     * @return  {Number}  the day of the month
+     */
+    const dayFormated = (day) => {
+        return Number(day.slice(8))
+    }
 
     if (isLoading) {
         return <div>Loading ...</div>
@@ -42,6 +53,8 @@ const Activity = () => {
                     <CartesianGrid strokeDasharray="2" vertical={false} />
                     <XAxis
                         dataKey="day"
+                        tickFormatter={dayFormated}
+                        domain={['dataMin +1', 'dataMax +1']}
                         tickMargin={16}
                         tickSize={0}
                         minTickGap={30}

@@ -12,6 +12,7 @@ const AverageSession = () => {
     const { userId } = useParams()
 
     /**
+     * getAverageSessions
      * @param   {string}  userAvSession
      * @param   {Number} userId  
      * @return  {object} data
