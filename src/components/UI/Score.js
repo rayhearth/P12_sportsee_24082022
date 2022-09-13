@@ -1,8 +1,10 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
-const Score = ({score}) => {
+const Score = ({ score }) => {
 
     /**
      *
@@ -28,7 +30,7 @@ const Score = ({score}) => {
                         innerRadius={'85%'} outerRadius={'100%'}
                         cornerRadius={'50%'}
                         dataKey="value"
-                        data={[{ name: 'score', value: data}, { name: 'total', value: 1 - data }]}
+                        data={[{ name: 'score', value: data }, { name: 'total', value: 1 - data }]}
                     >
                         <Cell fill="#E60000" stroke="#E60000" />
                         <Cell fill="transparent" stroke="transparent" />
@@ -52,8 +54,7 @@ const Score = ({score}) => {
 };
 
 Score.propTypes = {
-    // data : PropTypes.string.isRequired,
-    // value : PropTypes.number.isRequired
-    }
+    score: PropTypes.number.isRequired
+}
 
 export default Score;

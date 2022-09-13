@@ -6,7 +6,7 @@ import { dataServices } from '@/_services/Datamanager';
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
-const Activity = ({sessions}) => {
+const Activity = () => {
 
     /**@param {Number} userId */
     const { userId } = useParams()
