@@ -50,7 +50,7 @@ const Dashboard = () => {
                     <div className="graphic">
                         <AverageSession />
                         <Performance />
-                        <Score />
+                        <Score score={users.data}/>
                     </div>
                 </div>
 

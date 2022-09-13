@@ -1,26 +1,14 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom'
-
-
-
-import { dataServices } from '@/_services/Datamanager';
 
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
-const Score = () => {
-
-    /**@param {Number} userId */
-    const { userId } = useParams()
+const Score = ({score}) => {
 
     /**
-     * getUser
-     * @param   {string}  userScore
-     * @param   {Number} userId  
-     * @return  {object} data
+     *
+     * @const {number} data
      */
-    const { isLoading, data } = useQuery('userScore', () => dataServices.getUser(userId))
-    const userScore = data || {}
+    const data = score.score || score.todayScore
 
     const CustomLegend = ({ payload }) => (
         <div className="chart-legend">
@@ -28,10 +16,6 @@ const Score = () => {
             <div className="chart-legend-2">de votre objectif</div>
         </div>
     )
-
-    if (isLoading) {
-        return <div>Loading ...</div>
-    }
 
     return (
         <div className='score'>
@@ -44,7 +28,7 @@ const Score = () => {
                         innerRadius={'85%'} outerRadius={'100%'}
                         cornerRadius={'50%'}
                         dataKey="value"
-                        data={[{ name: 'score', value: userScore.data.todayScore }, { name: 'total', value: 1 - userScore.data.todayScore }]}
+                        data={[{ name: 'score', value: data}, { name: 'total', value: 1 - data }]}
                     >
                         <Cell fill="#E60000" stroke="#E60000" />
                         <Cell fill="transparent" stroke="transparent" />
@@ -67,5 +51,9 @@ const Score = () => {
     );
 };
 
+Score.propTypes = {
+    // data : PropTypes.string.isRequired,
+    // value : PropTypes.number.isRequired
+    }
 
 export default Score;
