@@ -1,10 +1,16 @@
 .score {
-    width: 16.125rem;
+    width: 32.5%;
     height: 16.438rem;
     position: relative;
     background-color: $grayLight;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 0.313rem;
+    @media screen and (max-width: 1250px) {
+        height: 14rem;
+    }
+    @media screen and (max-width: 1024px) {
+        height: 12rem;
+    }
     h2 {
         font-size: 0.938rem;
     }

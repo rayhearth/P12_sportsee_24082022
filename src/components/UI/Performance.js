@@ -6,6 +6,11 @@ import { dataServices } from '@/_services/Datamanager';
 
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from "recharts";
 
+
+/**
+ * Its a function that returns a div with a container with a RadarChart and all of his properties 
+ * @return {React.ReactElement} a RadarChart
+ */
 const Performance = () => {
 
     /**@param {Number} userId */

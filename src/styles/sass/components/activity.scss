@@ -1,5 +1,4 @@
 .daily-activity {
-    // width: 52.188rem;
     height: 20rem;
     border-radius: 0.625rem;
     padding: 6em 2em 2em;
@@ -29,17 +28,17 @@
                 height: 0.5rem;
                 border-radius: 0.25rem;
                 &:first-child {
-                    color:$grayDark;
+                    color: $grayDark;
                     background-color: $grayDark;
                 }
-                &:last-child{
+                &:last-child {
                     color: $red;
                     background-color: $red;
                 }
             }
         }
     }
-    .chart-tooltip{
+    .chart-tooltip {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -48,10 +47,10 @@
         background-color: $red;
         color: white;
         font-size: 0.75rem;
-        
     }
     // .recharts-tooltip-xrapper{
     //     outline: none !important;
     //     border: none !important;
     // }
+    
 }

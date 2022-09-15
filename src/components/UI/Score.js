@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
+
+/**
+ * Its a function who takes an object as an argument,and return  a div with a PieChart or RadialChart
+ * @param {object} score Contain score and today score datas from the API
+ * @return {React.ReactElement} a PieChart
+ */
 const Score = ({ score }) => {
 
     /**
@@ -54,7 +60,7 @@ const Score = ({ score }) => {
 };
 
 Score.propTypes = {
-    score: PropTypes.number.isRequired
+    score: PropTypes.object.isRequired
 }
 
 export default Score;

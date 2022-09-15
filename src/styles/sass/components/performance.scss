@@ -1,6 +1,12 @@
 .performance{
-    width: 16.125rem;
+    width: 32.5%;
     height: 16.438rem;
+    @media screen and (max-width: 1250px) {
+        height: 14rem;
+    }
+    @media screen and (max-width: 1105px) {
+        height: 12rem;
+    }
     .recharts-wrapper{
         font-size: 0.75rem;
         color: white;
@@ -8,5 +14,8 @@
         background-color: $grayDark;
         width: 100%;
         aspect-ratio: 1 / 1;
+        @media screen and (max-width: 1024px) {
+            gap: 0.675rem;
+        }
     }
 }

@@ -9,7 +9,6 @@ import energy from '@/styles/img/energy.svg'
 
 /**
  * it take in a type and value, and return a div with icon, title and unit
- * 
  * @prop {String} type of keyData
  * @prop {number} value of the keyData
  * 

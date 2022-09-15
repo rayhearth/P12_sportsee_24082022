@@ -6,6 +6,11 @@ import { dataServices } from '@/_services/Datamanager';
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
+
+/**
+ * Its a function that returns a div with a title, a responsive container, a bar chart and a tooltip
+ * @return {React.ReactElement} a Bar Chart
+ */
 const Activity = () => {
 
     /**@param {Number} userId */
@@ -94,9 +99,8 @@ const Activity = () => {
                 </BarChart>
             </ResponsiveContainer>
         </div>
-    )
-}
-
+    );
+};
 
 
 export default Activity;
