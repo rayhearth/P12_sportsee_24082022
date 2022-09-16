@@ -3,6 +3,7 @@ import Axios from './Caller.services'
 import { allData } from './DataMocked'
 import Model from './Model'
 
+
 const api = true
 
 /**
@@ -13,6 +14,7 @@ const api = true
  */
 const mockedData = (data, id) => {
     for (const key in data) {
+        //for each key in data if userId is stricktly egual at id
         if (data[key].userId === id) {
             /**
              * JSON.stringify = string
@@ -32,11 +34,11 @@ const mockedData = (data, id) => {
  * @return data
  */
 const getUser = async (userId) => {
-    if (api) {
+    if (!api) {
         console.log(allData.usersMocked, typeof(userId))
-        const { data } = mockedData(allData.usersMocked, userId)
-        return data
+        return  mockedData(allData.usersMocked, userId)
     } else {
+        console.log(Axios.get(`/user/${userId}`))
         const { data } = await Axios.get(`/user/${userId}`)
         return data
     }
