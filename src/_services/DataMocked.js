@@ -1,4 +1,4 @@
-const USER_MAIN_DATA = [
+const usersMocked = [
     {
         id: 12,
         userInfos: {
@@ -31,7 +31,7 @@ const USER_MAIN_DATA = [
     }
 ]
 
-const USER_ACTIVITY = [
+const activityMocked = [
     {
         userId: 12,
         sessions: [
@@ -115,7 +115,7 @@ const USER_ACTIVITY = [
 ]
 
 
-const USER_AVERAGE_SESSIONS = [
+const averageSessionsMocked = [
     {
         userId: 12,
         sessions: [
@@ -185,7 +185,7 @@ const USER_AVERAGE_SESSIONS = [
 ]
 
 
-const USER_PERFORMANCE = [
+const performanceMocked = [
     {
         userId: 12,
         kind: {
@@ -263,7 +263,7 @@ const USER_PERFORMANCE = [
 ]
 
 export const allData = {
-    USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE
+    usersMocked, activityMocked, averageSessionsMocked, performanceMocked
 }
 
 

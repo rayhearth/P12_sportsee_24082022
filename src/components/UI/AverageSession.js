@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { dataServices } from '@/_services/Datamanager';
 
-import { LineChart, Line, XAxis, YAxis, Tooltip,Rectangle, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Rectangle, ResponsiveContainer } from 'recharts';
 
 /**
  * Its a function that returns a div with a title, a responsive container, a line chart, a line, a y axis, an x axis and a tooltip

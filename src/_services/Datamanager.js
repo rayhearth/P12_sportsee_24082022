@@ -1,13 +1,23 @@
 import Axios from './Caller.services'
 
 import { allData } from './DataMocked'
+import Model from './Model'
 
 const api = true
 
-
+/**
+ * get user data from DataMocked
+ * @param   {object}  data  array of all users
+ * @param   {number}  id    userId
+ * @return  {object}        return user datas
+ */
 const mockedData = (data, id) => {
     for (const key in data) {
         if (data[key].userId === id) {
+            /**
+             * JSON.stringify = string
+             * JSON.parse = retransform to object
+             */
             return JSON.parse(JSON.stringify(data[key]))
         }
     }
@@ -22,8 +32,10 @@ const mockedData = (data, id) => {
  * @return data
  */
 const getUser = async (userId) => {
-    if (!api) {
-        return mockedData(allData.USER_MAIN_DATA, userId)
+    if (api) {
+        console.log(allData.usersMocked, typeof(userId))
+        const { data } = mockedData(allData.usersMocked, userId)
+        return data
     } else {
         const { data } = await Axios.get(`/user/${userId}`)
         return data
@@ -40,11 +52,10 @@ const getUser = async (userId) => {
  */
 const getActivity = async (userId) => {
     if (!api) {
-        return mockedData(allData.USER_ACTIVITY, userId)
+        return mockedData(allData.usersMocked, userId)
     } else{
         const { data } = await Axios.get(`/user/${userId}/activity`)
         return data
-
     }
 }
 
@@ -58,7 +69,7 @@ const getActivity = async (userId) => {
  */
 const getAverageSessions = async (userId) => {
     if (!api) {
-        return mockedData(allData.USER_AVERAGE_SESSIONS, userId)
+        return mockedData(allData.usersMocked, userId)
     }
     const { data } = await Axios.get(`/user/${userId}/average-sessions`)
     return data
@@ -74,7 +85,7 @@ const getAverageSessions = async (userId) => {
  */
 const getPerformance = async (userId) => {
     if (!api) {
-        return mockedData(allData.USER_PERFORMANCE, userId)
+        return mockedData(allData.usersMocked, userId)
     }
     const { data } = await Axios.get(`/user/${userId}/performance`)
     return data
