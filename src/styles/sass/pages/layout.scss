@@ -1,3 +1,8 @@
 .admin{
     display: flex;
+    .network-error{
+        position: absolute;
+        left: 150px;
+        top: 150px;
+    }
 }

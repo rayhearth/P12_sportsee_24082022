@@ -22,10 +22,18 @@ const Activity = () => {
      * @param   {Number} userId  
      * @return  {object} data
      */
-    const { isLoading, data } = useQuery('userActivity', () => dataServices.getActivity(userId))
+    const { isLoading, data, error } = useQuery('userActivity', () => dataServices.getActivity(userId))
     const userActivity = data || {}
 
-    
+    if (isLoading) {
+        return <div>Loading ...</div>
+    }
+
+    if (error) {
+        return <div className='network-error'>{error.message}</div>
+    }
+
+
     const CustomTooltip = ({ active, payload }) => active ? (
         <div className="chart-tooltip">
             <div>{payload[0].value}kg</div>
@@ -42,9 +50,6 @@ const Activity = () => {
         return Number(day.slice(8))
     }
 
-    if (isLoading) {
-        return <div>Loading ...</div>
-    }
 
     return (
         <div className='daily-activity'>
@@ -80,7 +85,7 @@ const Activity = () => {
                         orientation='right'
                         domain={['dataMin-100', 'dataMax+0']}
                     />
-                    <Tooltip content={<CustomTooltip />} 
+                    <Tooltip content={<CustomTooltip />}
                     />
                     <Bar
                         yAxisId="kilogram"

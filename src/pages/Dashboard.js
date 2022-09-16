@@ -29,7 +29,7 @@ const Dashboard = () => {
     }
 
     if (error) {
-        return <div>404</div>
+        return <div className='network-error'>{error.message}</div>
     }
 
     return (

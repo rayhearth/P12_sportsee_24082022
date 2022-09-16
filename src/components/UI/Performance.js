@@ -22,14 +22,23 @@ const Performance = () => {
      * @param   {Number} userId  
      * @return  {object} data
      */
-    const { isLoading, data } = useQuery('userPerformance', () => dataServices.getPerformance(userId))
+    const { isLoading, data, error } = useQuery('userPerformance', () => dataServices.getPerformance(userId))
     const userPerformance = data || {}
-
-    const kindFormated = (id) => userPerformance.data.kind[id]
 
     if (isLoading) {
         return <div>Loading ...</div>
     }
+
+    if (error) {
+        return <div className='network-error'>{error.message}</div>
+    }
+
+/**
+ * [kind description]
+ *
+ * @var {[type]}
+ */
+    const kindFormated = (id) => userPerformance.data.kind[id]
 
     return (
         <div className='performance'>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { dataServices } from '@/_services/Datamanager';
 
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip,Rectangle, ResponsiveContainer } from 'recharts';
 
 /**
  * Its a function that returns a div with a title, a responsive container, a line chart, a line, a y axis, an x axis and a tooltip
@@ -22,8 +22,16 @@ const AverageSession = () => {
      * @param   {Number} userId  
      * @return  {object} data
      */
-    const { isLoading, data } = useQuery('userAvSession', () => dataServices.getAverageSessions(userId))
+    const { isLoading, data, error } = useQuery('userAvSession', () => dataServices.getAverageSessions(userId))
     const userAvSession = data || {}
+
+    if (isLoading) {
+        return <div>Loading ...</div>
+    }
+
+    if (error) {
+        return <div className='network-error'>{error.message}</div>
+    }
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -36,9 +44,17 @@ const AverageSession = () => {
         return null;
     }
 
-    if (isLoading) {
-        return <div>Loading ...</div>
-    }
+    const CustomCursor = ({ points }) => {
+		return (
+			<Rectangle
+				fill="#000000"
+				opacity={0.2}
+				x={points[0].x}
+				width={500}
+				height={300}
+			/>
+		);
+	};
 
     return (
         <div className='average-session'>
@@ -56,7 +72,9 @@ const AverageSession = () => {
                         hide
                         domain={['dataMin-10', 'dataMax+1']}
                     />
-                    <Tooltip content={<CustomTooltip />} />
+                    <Tooltip 
+                    content={<CustomTooltip />}
+                    cursor= {<CustomCursor/>} />
                     <Line
                         type="monotone"
                         dataKey="sessionLength"

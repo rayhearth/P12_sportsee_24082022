@@ -3,12 +3,10 @@
 @import "./utils/_variables";
 @import "./base/reset";
 
-// @import "./components/";
-
 
 @import "./layout/_header";
 @import "./layout/_sidebar";
-// @import "./layout/_footer";
+
 
 @import "./components/activity.scss";
 @import "./components/averageSessions.scss";
@@ -16,7 +14,7 @@
 @import "./components/score.scss";
 @import "./components/statistique.scss";
 
-// @import "./pages/error";
+@import "./pages/error";
 @import "./pages/layout"; 
 @import "./pages/home";
 @import "./pages/dashboard.scss";
