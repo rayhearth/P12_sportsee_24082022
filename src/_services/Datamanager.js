@@ -19,6 +19,7 @@ const mockedData = (data, id) => {
             /**
              * JSON.stringify = string
              * JSON.parse = retransform to object
+             * this is necessary for the datas kind and day 
              */
             return JSON.parse(JSON.stringify(data[key]))
         }
