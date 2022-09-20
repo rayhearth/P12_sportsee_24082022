@@ -1,7 +1,7 @@
 import Axios from './Caller.services'
 
 import { allData } from './DataMocked'
-import Model from './Model'
+
 
 
 const api = true
@@ -36,14 +36,17 @@ const mockedData = (data, id) => {
  */
 const getUser = async (userId) => {
     if (!api) {
-        console.log(allData.usersMocked, typeof(userId))
-        return  mockedData(allData.usersMocked, userId)
+        // console.log(allData.usersMocked, typeof(userId))
+        const res = allData.usersMocked.find((el) => el.id === userId)
+        console.log(res)
+        return { data: res }
     } else {
-        console.log(Axios.get(`/user/${userId}`))
+        // console.log(Axios.get(`/user/${userId}`))
         const { data } = await Axios.get(`/user/${userId}`)
         return data
     }
 }
+
 
 /**on recupere les données de USER_ACTIVITY */
 /**
@@ -55,8 +58,8 @@ const getUser = async (userId) => {
  */
 const getActivity = async (userId) => {
     if (!api) {
-        return mockedData(allData.usersMocked, userId)
-    } else{
+        return mockedData(allData.activityMocked, userId)
+    } else {
         const { data } = await Axios.get(`/user/${userId}/activity`)
         return data
     }
@@ -72,7 +75,7 @@ const getActivity = async (userId) => {
  */
 const getAverageSessions = async (userId) => {
     if (!api) {
-        return mockedData(allData.usersMocked, userId)
+        return mockedData(allData.averageSessionsMocked, userId)
     }
     const { data } = await Axios.get(`/user/${userId}/average-sessions`)
     return data
@@ -88,7 +91,7 @@ const getAverageSessions = async (userId) => {
  */
 const getPerformance = async (userId) => {
     if (!api) {
-        return mockedData(allData.usersMocked, userId)
+        return mockedData(allData.performanceMocked, userId)
     }
     const { data } = await Axios.get(`/user/${userId}/performance`)
     return data
