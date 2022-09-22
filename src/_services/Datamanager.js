@@ -6,26 +6,6 @@ import { allData } from './DataMocked'
 
 const api = true
 
-/**
- * get user data from DataMocked
- * @param   {object}  data  array of all users
- * @param   {number}  id    userId
- * @return  {object}        return user datas
- */
-const mockedData = (data, id) => {
-    for (const key in data) {
-        //for each key in data if userId is stricktly egual at id
-        if (data[key].userId === id) {
-            /**
-             * JSON.stringify = string
-             * JSON.parse = retransform to object
-             * this is necessary for the datas kind and day 
-             */
-            return JSON.parse(JSON.stringify(data[key]))
-        }
-    }
-}
-
 /**on recupere les données de USER_MAIN_DATA **/
 /**
  * Get main information data: user infos, key data & today score
@@ -36,10 +16,8 @@ const mockedData = (data, id) => {
  */
 const getUser = async (userId) => {
     if (!api) {
-        // console.log(allData.usersMocked, typeof(userId))
-        const res = allData.usersMocked.find((el) => el.id === userId)
-        console.log(res)
-        return { data: res }
+        const { data } = await Axios.get(allData.usersMocked.find((el) => el.id === userId))
+        return data
     } else {
         // console.log(Axios.get(`/user/${userId}`))
         const { data } = await Axios.get(`/user/${userId}`)
@@ -58,7 +36,8 @@ const getUser = async (userId) => {
  */
 const getActivity = async (userId) => {
     if (!api) {
-        return mockedData(allData.activityMocked, userId)
+        const { data } = await Axios.get(allData.activityMocked.find((el) => el.userId === userId))
+        return data
     } else {
         const { data } = await Axios.get(`/user/${userId}/activity`)
         return data
@@ -75,7 +54,8 @@ const getActivity = async (userId) => {
  */
 const getAverageSessions = async (userId) => {
     if (!api) {
-        return mockedData(allData.averageSessionsMocked, userId)
+        const { data } = await Axios.get(allData.averageSessionsMocked.find((el) => el.userId === userId))
+        return data
     }
     const { data } = await Axios.get(`/user/${userId}/average-sessions`)
     return data
@@ -91,7 +71,8 @@ const getAverageSessions = async (userId) => {
  */
 const getPerformance = async (userId) => {
     if (!api) {
-        return mockedData(allData.performanceMocked, userId)
+        const { data } = await Axios.get(allData.performanceMocked.find((el) => el.userId === userId))
+        return data
     }
     const { data } = await Axios.get(`/user/${userId}/performance`)
     return data
