@@ -33,12 +33,20 @@ const Performance = () => {
         return <div className='network-error'>{error.message}</div>
     }
 
-/**
- * [kind description]
- *
- * @var {[type]}
- */
-    const kindFormated = (id) => userPerformance.data.kind[id]
+    /**
+     * formate Kind
+     * @const {string} 
+     */
+    const titleKind = {
+        cardio: 'Cardio',
+        energy: 'Energie',
+        endurance: 'Endurance',
+        strength: 'Force',
+        speed: 'Vitesse',
+        intensity: 'Intensité',
+    }
+
+    const kindFormated = (id) => titleKind[userPerformance.data.kind[id]]
 
     return (
         <div className='performance'>
