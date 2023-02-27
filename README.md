@@ -1,13 +1,10 @@
 
-![Logo](https://github.com/rayhearth/P12_Sportsee_24082022/blob/master/public/assets/img/logo.svg)
-
-
-# P12-Sportsee
-
+# ![Logo](https://github.com/rayhearth/P12_Sportsee_24082022/blob/master/public/assets/img/logo.svg)
 
 ## Présentation
 
 SportSee project is an application for sportive people that want to follow their daily progress through analytics dashboard.
+
 ## Prerequisites
 
 
