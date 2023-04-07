@@ -32,7 +32,7 @@ Forke and clone the repository :
 
 for the backEnd:
 
-cd Baclend
+cd Backend
 
 yarn dev
 
